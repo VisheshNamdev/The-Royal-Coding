@@ -1,0 +1,324 @@
+{% extends "base_unique.html" %}
+{% block title %}{{ user.username }}{% endblock %}
+
+{% block content %}
+<head>
+  <style>
+    /* Styles for the SVG container */
+.svg-container {
+  width: 8rem; /* Adjust as needed for your layout */
+  height: 8rem; /* Adjust as needed for your layout */
+}
+
+/* Styles for the circles */
+.circle {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.circle-background {
+  stroke: #f3f3f3; /* Gray color for background circle */
+  stroke-width: 10; /* Thickness of the circle stroke */
+}
+
+.circle-progress {
+  stroke: #ff9900; /* Orange color for progress circle */
+  stroke-width: 10; /* Thickness of the circle stroke */
+  stroke-dasharray: 0; /* Initially no progress */
+  transition: stroke-dasharray 0.5s ease; /* Smooth transition for progress animation */
+}
+
+    @keyframes increaseNumber {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+    }
+    
+    .animate-fire {
+      display: inline-block;
+      animation: increaseNumber 1s infinite;
+    }
+    
+    .tab-link.active {
+      border-top: 2px solid #CBD5E0;
+    }
+    .icon-color-1 {
+      color: #1da1f2; /* Twitter blue */
+    }
+    .icon-color-2 {
+      color: #ffdd57; /* Yellow */
+    }
+    .icon-color-3 {
+      color: #ff4500; /* Orange */
+    }
+    .icon-color-4 {
+      color: #4caf50; /* Green */
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body class="text-white bg-gray-800">
+  <div class="max-w-screen-lg mx-auto p-4">
+    <!-- Profile Header -->
+<div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4 mb-4">
+  <img src="{{user.image_url}}" alt="Profile Picture" class="w-28 h-28 md:w-32 md:h-32 rounded-full">
+
+  <div>
+    <h1 class="text-2xl md:text-3xl font-bold">{{ user.username }}</h1>
+    <div class="text-base md:text-lg">
+      {% if user.bio %}
+        <p class="text-gray-400">{{ user.bio }}</p>
+      {% endif %}
+      {% if user.university %}
+        <p>{{ user.university }}</p>
+      {% endif %}
+      {% if user.gender or user.birthday %}
+        <p>
+          {% if user.gender %}{{ user.gender }} | {% endif %}
+          <b>{{ user.birthday }}</b>
+        </p>
+      {% endif %}
+      <!-- Display user's experience -->
+      {% if experience %}
+        <div>
+          <ul>
+            {% for exp in experience %}
+              <li>{{ exp.position }}</li>
+              <li><b>{{ exp.company }}</b></li>
+              <li>{{ exp.duration }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+  
+  
+  
+    <!-- Follow Info -->
+    <div class="flex justify-around mb-4 text-center text-sm p-2">
+      <div>
+        <span class="font-bold block text-2xl mb-1">{{ user.posts|length }}</span>
+        <i class="fas fa-pencil-alt icon-color-1" style="font-size: 20px;"></i>
+        <p><b>Blogs</b></p>
+      </div>
+      <div>
+        <span class="font-bold block text-2xl mb-1">{{ user.coins }}</span>
+        <i class="fas fa-coins icon-color-2" style="font-size: 20px;"></i>
+        <p><b>Coins</b></p>
+      </div>
+      <div>
+        <span class="font-bold block text-2xl mb-1">{{ user.daily_streak }}</span>
+        <i class="fas fa-fire icon-color-3" style="font-size: 20px;"></i>
+        <p><b>Maximum Streak</b></p>
+      </div>
+    </div>
+    <!-- Options -->
+    <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 mb-12">
+  {% if current_user.is_authenticated and current_user.id == user.id %}
+    <a href="/edit_profile">
+      <button class="w-full md:w-auto px-4 py-2 rounded bg-yellow-500 text-black">
+        <b>Edit Profile</b>
+      </button>
+    </a>
+    <a href="/editor">
+      <button class="w-full md:w-auto px-4 py-2 rounded bg-yellow-500 text-black">
+        <i class="fa-solid fa-plus mr-2"></i><b>New Blog</b>
+      </button>
+    </a>
+  {% endif %}
+  <a href="{{ user.linkedin }}">
+    <button class="w-full md:w-auto bg-blue-400 text-white px-4 py-2 rounded">
+      <b>LinkedIn</b>
+    </button>
+  </a>
+  <a href="{{ user.github }}">
+    <button class="w-full md:w-auto bg-gray-700 text-white px-4 py-2 rounded">
+      <b>GitHub</b>
+    </button>
+  </a>
+</div>
+
+    
+    <!-- Profile Sections Vishesh-->
+    <div class="flex justify-center border-b border-gray-300 mb-4 ">
+      <a href="#posts" class="px-4 py-2 tab-link active" data-tab="posts"><i class="fas fa-th icon-color-1"></i> &nbsp;Posts</a>
+      {% if current_user.is_authenticated and current_user.id == user.id %}
+      <a href="#saved" class="px-4 py-2 tab-link" data-tab="saved"><i class="fas fa-bookmark icon-color-2"></i> &nbsp;Saved</a>
+      <a href="#blog-streak-coins" class="px-4 py-2 tab-link" data-tab="blog-streak-coins"><i class="fas fa-medal icon-color-4"></i> &nbsp;Blog Streak & Coins</a>
+      {% endif %}
+    </div>
+    
+    
+<!-- Posts Section -->
+<div id="posts" class="tab-content active mb-8">
+  <h2 class="text-xl font-bold mb-4">Posts</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+    {% if posts %}
+      {% for post in posts[:6] %} <!-- Limit to the first 6 posts -->
+      <a href="/blog/{{ post.endpoint }}">
+        <div class="bg-gray-200 p-4 rounded-lg shadow-md">
+          <h3 class="text-lg font-semibold">{{ post.title }}</h3>
+          <p class="text-gray-400 mt-2">{{ post.content | safe | truncate(60) }}</p>
+          <p class="text-gray-500 text-xs mt-2">{{ post.date_posted.strftime('%d-%m-%Y') }}</p>
+        </div>
+      </a>
+      {% endfor %}
+    {% endif %}
+  </div>
+  {% if posts|length == 0 %}
+    <p class="text-gray-400">No posts available.</p>
+  {% endif %}
+</div>
+
+
+    <!-- Saved Section -->
+    <div id="saved" class="tab-content mb-8">
+      <h2 class="text-xl font-bold mb-4">Saved</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+        {% if saved_posts %}
+          {% for post in saved_posts %}
+            <a href="/blog/{{ post.endpoint }}">
+              <div class="bg-gray-200 p-4 rounded shadow-md">
+                <h3 class="font-semibold text-lg">{{ post.title }}</h3>
+                <div class="flex items-center mb-2">
+                  <span class="text-sm">{{ post.author.username }} | {{ post.date_posted.strftime('%d-%m-%Y') }}</span>
+                </div>
+                <p class="text-gray-400 mt-2">{{ post.content | safe | truncate(80) }}</p>
+              </div>
+            </a>
+          {% endfor %}
+        {% else %}
+      </div> <!-- Closing the grid div here -->
+      <div class="py-8 flex justify-center">
+        <h3 class="text-gray-500">No saved posts available</h3>
+      </div>
+      {% endif %}
+    </div>
+    
+
+  
+
+
+    <!-- Blog Streak & Coins Section -->
+     
+    <div id="blog-streak-coins" class="tab-content">
+      <div class="bg-white p-6 shadow-md rounded-lg mt-4">
+        <div class="flex items-center justify-between space-x-2 font-semibold text-gray-900 leading-8">
+          <div class="flex items-center space-x-2">
+            <span class="text-orange-500">
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5V13H8v3.5H5.5V11H8v-1.5c0-1.66 1.34-3 3-3h3v2h-3c-.55 0-1 .45-1 1V11h4.5l-.5 4.5H10z"/>
+              </svg>
+            </span>
+            <span class="tracking-wide">Blog Streak</span>
+          </div>
+          <a href="/rewards" class="inline-flex items-center">
+            <button class="prebtn lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white border-0 py-2 px-4 focus:outline-none hover:bg-white rounded text-white" style="background-color: #ffa500;">
+              <span class="align-middle"><i class="fas fa-coins icon-color-2"></i> <b>Redeem Coins</b></span>
+            </button>
+          </a>
+        </div>
+    
+        <div class="text-black mt-3">
+          <p class="mb-3">You've written <span class="text-orange-500 animate-fire">&nbsp;{{ current_user.daily_streak }}🔥</span> consecutive blog posts!</p>
+    
+          <!-- Rewards Tracker -->
+          <div class="bg-gray-50 p-4 rounded-lg mb-4 shadow-inner">
+            <h4 class="text-lg font-semibold mb-2">Streak Rewards</h4>
+            <ul class="list-disc list-inside">
+              <li>10 days streak: <span class="text-green-500">+10 Royal coins</span></li>
+              <li>20 days streak: <span class="text-green-500">+20 Royal coins</span></li>
+              <li>30 days streak: <span class="text-green-500">+30 Royal coins</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>    
+      <!-- Include JavaScript to update the streak dynamically after submission -->
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const streak = parseInt(`{{ current_user.daily_streak }}`, 10);
+          const lastPostDate = new Date(`{{ current_user.last_post_date.isoformat() if current_user.last_post_date else '' }}`);
+          updateStreakCircle(streak, lastPostDate);
+        });
+    
+        function updateStreakCircle(streak, lastPostDate) {
+          const fullCircle = 282.743; // Circumference of the circle
+          const streakCircle = document.getElementById('streakCircle');
+          const streakLabel = document.getElementById('streakLabel');
+          let offset;
+          let label;
+    
+          const today = new Date();
+          const daysSinceLastPost = Math.floor((today - lastPostDate) / (1000 * 60 * 60 * 24));
+    
+          if (daysSinceLastPost > 1) {
+            // Reset streak if more than one day since last post
+            streak = 0;
+          } else {
+            // Increment streak if last post was yesterday
+            streak += 1;
+          }
+    
+          if (streak <= 7) {
+            offset = fullCircle - (streak / 7) * fullCircle;
+            label = `${streak} / 7`;
+          } else if (streak <= 15) {
+            offset = fullCircle - ((streak - 7) / 8) * fullCircle;
+            label = `${streak - 7} / 15`;
+          } else {
+            offset = fullCircle - ((streak - 15) / 15) * fullCircle;
+            label = `${streak - 15} / 30`;
+          }
+    
+          streakCircle.style.strokeDasharray = `${fullCircle} ${fullCircle}`;
+          streakCircle.style.strokeDashoffset = offset;
+    
+          streakLabel.setAttribute('transform', `translate(50%, 50%)`);
+          streakLabel.textContent = label;
+        }
+    
+        function submitBlog() {
+          // Example AJAX submission or form submission
+          // Upon successful submission, update the streak dynamically
+          fetch('/editor', {
+            method: 'POST',
+            // Add appropriate headers and body as needed
+          })
+          .then(response => response.json())
+          .then(data => {
+            const lastPostDate = new Date(data.last_post_date);
+            document.getElementById('dailyStreak').textContent = data.daily_streak;
+            updateStreakCircle(data.daily_streak, lastPostDate);
+            alert('Blog submitted successfully! Daily streak updated.');
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert('Error submitting blog. Please try again.');
+          });
+        }
+      </script>
+    </div>
+  </div></body>
+    
+  <script>
+    document.querySelectorAll('.tab-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelectorAll('.tab-link').forEach(item => item.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        document.querySelector(`#${this.dataset.tab}`).classList.add('active');
+        this.classList.add('active');
+      });
+    });
+  </script>
+{% endblock %}

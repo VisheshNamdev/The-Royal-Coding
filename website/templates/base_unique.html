@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{user.username}} {% endblock %} - The Royal </title>
+    
+<!--google ads code -->
+<meta name="google-adsense-account" content="ca-pub-9610398121068963">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9610398121068963"
+     crossorigin="anonymous"></script>
+ <!--google ads code -->
+ 
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/images/Fevicon-TRC.png') }}" />  
+
+<style>
+        body {
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-family: Corbel ;
+        }
+        .dark-mode {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        .hidden {
+            display: none;
+        }
+        .block {
+            display: block;
+        }
+        
+        .menu-links a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+        }
+        .menu-links a:hover {
+            background-color: #ddd;
+        }
+
+        @media (min-width: 720px) {
+            .desktop-nav {
+                display: flex;
+            }
+            .mobile-nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 719px) {
+            .desktop-nav {
+                display: none;
+            }
+            .mobile-nav {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body class="text-black">
+    <header class="text-black p-2 flex justify-between items-center" style="background-color: #ffa500;">
+        <div class="flex items-center">
+            <a href="/">
+                <img class="mt-1 imagelogo w-11 h-11 inline" src="{{ url_for('static', filename='/images/logo.png') }}"></a>
+             
+              <span class="text-black dark:text-white cursor-pointer m-1" style="font-size: 20px;">
+               <a href="/"> <b>The Royal Coding</b></a>
+                </span>
+            </a>
+        </div>
+
+        <!-- Navigation links for desktop -->
+        <nav class="desktop-nav justify-center space-x-6 text-lg">
+            <a href="/courses" class="hover:text-white mt-1"><b>Courses</b></a>
+            <a href="/basic-practice-problems" class="hover:text-white mt-1"><b>Practice</b></a>
+            <a href="#!" class="hover:text-white mt-1"><b>Tutorials</b></a>
+            <a href="/posts" class="hover:text-white mt-1"><b>Blogs</b></a>
+            <a href="/contact" class="hover:text-white mt-1"><b>Contact us</b></a>
+            <div class="toggle-button flex items-center cursor-pointer bg-white px-4 py-2 rounded-md" id="themeToggle">
+                <i class="far fa-moon text-black mt-1"></i>
+            </div>
+          {% if current_user.is_authenticated and current_user.id == user.id %}
+        <a href="/logout" class="flex items-center cursor-pointer bg-black px-3 py-2 rounded-md"><i class="fas fa-sign-out-alt" style="font-size: 20px; color: white;"></i></a> 
+        {% endif %}
+        </nav>
+
+        <!-- Hamburger menu icon for mobile -->
+        <div class="mobile-nav">
+            <button id="menu-toggle" class="toggle-button flex items-center cursor-pointer bg-white px-4 py-2 rounded-md">
+                <i class="fas fa-bars text-black mt-1"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile menu links -->
+    <nav id="mobile-menu" class="menu-links hidden bg-white">
+      <a href="/courses" class="hover:text-white mt-1"><b>Courses</b></a>
+      <a href="#" class="hover:text-white mt-1"><b>Practice</b></a>
+      <a href="#" class="hover:text-white mt-1"><b>Tutorials</b></a>
+      <a href="#" class="hover:text-white mt-1"><b>Blogs</b></a>
+      <a href="/contact" class="hover:text-white mt-1"><b>Contact us</b></a>
+      <div class="toggle-button flex items-center cursor-pointer bg-white px-4 py-2 rounded-md" id="themeToggle">
+          <i class="far fa-moon text-black mt-1"></i>
+      </div>
+    </nav>
+
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('block');
+            } else {
+                mobileMenu.classList.remove('block');
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        const toggleButton = document.getElementById('themeToggle');
+        const moonIcon = toggleButton.querySelector('i');
+
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+
+            if (document.body.classList.contains('dark-mode')) {
+                // Dark mode
+                document.documentElement.style.setProperty('--bg-color', '#2d3748');
+                document.documentElement.style.setProperty('--text-color', '#fff');
+                moonIcon.classList.remove('fa-moon');
+                moonIcon.classList.add('fa-sun');
+            } else {
+                // Light mode
+                document.documentElement.style.setProperty('--bg-color', '#f3f4f6');
+                document.documentElement.style.setProperty('--text-color', '#333');
+                moonIcon.classList.remove('fa-sun');
+                moonIcon.classList.add('fa-moon');
+            }
+        });
+    </script>
+
+    {% block content %}
+    {% endblock %}
+    
+    <footer class="text-gray-600 body-font">
+        <div class="container px-5 py-12 mx-auto flex items-center sm:flex-row flex-col">
+            <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+                <img class="w-10 h-10 inline" src="{{ url_for('static', filename='/images/logo.png') }}" alt="Company Logo">
+                <span class="ml-3 text-xl"><b>The Royal Coding</b></span>
+            </a>
+            <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2024 TheRoyalCoding —
+                <a href="https://instagram.com/theroyalcoding" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">@theroyalcoding</a>
+            </p>
+            <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+                <a href="https://www.facebook.com/theroyalcoding" class="text-gray-500">
+                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/theroyalcoding" class="ml-3 text-gray-500">
+                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/theroyalcoding" class="ml-3 text-gray-500">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/company/theroyalcoding/" class="ml-3 text-gray-500">
+                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                        <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                        <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                    </svg>
+                </a>
+            </span>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"></script>
+</body>
+</html>

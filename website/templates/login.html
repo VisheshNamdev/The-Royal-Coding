@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login to The Royal Coding to resume your journey with coding tutorials, practice programs, tech blogs, and more. Access exclusive content and stay updated with the latest in tech.">
+    <meta name="keywords" content="login, The Royal Coding, coding tutorials, tech blogs">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <title>Login - The Royal Coding</title>
+    
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/Fevicon-TRC.png') }}" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <meta property="og:title" content="Login - The Royal Coding">
+    <meta property="og:description" content="Login to The Royal Coding to resume your journey with coding tutorials, blogs, and more.">
+    <meta property="og:image" content="{{ url_for('static', filename='images/og-image.png') }}">
+    <meta property="og:url" content="https://theroyalcoding.com/login">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Login - The Royal Coding">
+    <meta name="twitter:description" content="Login to The Royal Coding to resume your journey with coding tutorials, blogs, and more.">
+    <meta name="twitter:image" content="{{ url_for('static', filename='images/twitter-image.png') }}">
+
+    <link rel="canonical" href="https://theroyalcoding.com/login">
+    <style>
+        .login-with-google-btn {
+            transition: background-color .3s, box-shadow .3s;
+            padding: 12px 16px 12px 42px;
+            border: none;
+            border-radius: 3px;
+            box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
+            color: #757575;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
+            background-color: white;
+            background-repeat: no-repeat;
+            background-position: 12px 11px;
+        }
+        .login-with-google-btn:hover {
+            box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+        }
+        .login-with-google-btn:active {
+            background-color: #eeeeee;
+        }
+        .login-with-google-btn:focus {
+            outline: none;
+            box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25), 0 0 0 3px #c8dafc;
+        }
+        .login-with-google-btn:disabled {
+            filter: grayscale(100%);
+            background-color: #ebebeb;
+            box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 flex justify-center items-center h-screen">
+    <div class="w-full max-w-md">
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+        <div class="container mt-4">
+            {% for category, message in messages %}
+            <div class="alert {{ 'bg-red-100 border-red-400 text-red-700' if category == 'error' else 'bg-green-100 border-green-400 text-green-700' }} px-4 py-3 rounded relative mb-4">
+                <strong class="font-bold">{{ 'Error: ' if category == 'error' else 'Success: ' }}</strong>
+                <span class="block sm:inline">{{ message }}</span>
+                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                    <svg class="fill-current h-6 w-6 text-{{ 'red' if category == 'error' else 'green' }}-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" onclick="this.parentElement.parentElement.style.display='none'">
+                        <title>Close</title>
+                        <path d="M14.348 14.849a.5.5 0 01-.708 0L10 11.207l-3.64 3.642a.5.5 0 01-.708-.707l3.64-3.641-3.64-3.642a.5.5 0 11.708-.707L10 9.793l3.64-3.641a.5.5 0 01.708.707l-3.64 3.642 3.64 3.641a.5.5 0 010 .708z" />
+                    </svg>
+                </span>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+        
+        <div class="bg-white p-8 rounded shadow-md w-full">
+            <h1 class="text-2xl font-bold mb-4">Login</h1>
+            <form method="post">
+                <div class="mb-4 relative">
+                    <label for="email" class="block text-sm font-medium text-gray-700">
+                        <i class="fas fa-envelope mr-2"></i>Email
+                    </label>
+                    <input type="email" id="email" name="email" required placeholder="Email"
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                </div>
+                <div class="mb-4 relative">
+                    <label for="password" class="block text-sm font-medium text-gray-700">
+                        <i class="fas fa-lock mr-2"></i>Password
+                    </label>
+                    <input type="password" id="password" name="password" required placeholder="Password"
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <i id="togglePassword" class="fas fa-eye absolute top-9 right-3 cursor-pointer"></i>
+                </div>
+                <div class="flex justify-between items-center mb-4">
+                    <a href="/forgot-password" class="text-sm text-blue-500 hover:underline" style="color: #ffa500;">Forgot Password?</a>
+                </div>
+                <button class="w-full text-white rounded py-2 mt-4" style="background-color: #ffa500;">Login</button>
+                <div class="text-center mt-4">
+                    <span>Or login with:</span>
+                    <div class="flex justify-center mt-2 space-x-2">
+                        <a href="{{ url_for('auth.login_with_google') }}">
+                            <button type="button" class="login-with-google-btn">Continue with Google</button>
+                        </a>
+                    </div>
+                </div>
+                <p class="text-center mt-4">New user? <a href="/signup" class="hover:underline" style="color: #ffa500;">Sign up now</a></p>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            const passwordInput = document.getElementById('password');
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+    </script>
+</body>
+
+</html>

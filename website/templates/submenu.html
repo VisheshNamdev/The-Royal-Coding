@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Welcome Popup</title>
+    <style>
+        /* Custom Styles */
+        .thought_popup {
+            display: none;
+        }
+
+        .thought_popup-content {
+            min-width: 300px;
+            max-width: 90%;
+            height: auto;
+        }
+
+        /* Positioning close button */
+        .close-btn-thoughts {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+
+        /* Icons */
+        .thought_icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Popup Modal -->
+    <div id="popup" class="thought_popup fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+        <div class="thought_popup-content bg-white rounded-lg shadow-lg p-6 flex flex-col items-center space-y-4 relative">
+            <!-- Close button -->
+            <button id="closeBtn" class="close-btn-thoughts bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <!-- Greeting message with icon -->
+            <div class="w-full text-center">
+                <div class="flex items-center justify-center bg-yellow-500 p-4 rounded-full mx-auto w-16 h-16">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zM4.293 5.293a1 1 0 011.414 0L10 9.586l4.293-4.293a1 1 0 111.414 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </div>
+                <p id="greeting" class="text-lg text-gray-800 mt-4">Loading...</p>
+                <p id="userName" class="text-lg text-gray-800 mb-4">John Doe</p>
+            </div>
+            <!-- Thought of the day section -->
+            <div class="w-full text-center">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2 underline">Thought of the Day</h3>
+                <div class="flex items-center justify-center bg-yellow-100 p-4 rounded-lg">
+                    <i class="fa-solid fa-dove fa-fade" style="color: #ffa500; font-size: 22px;"></i>
+                    &nbsp; <p id="thoughtOfTheDay" class="text-base text-black font-bold">Loading...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Your website content -->
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-gray-800">Welcome to Your Website</h1>
+        <p>Welcome to your amazing platform!</p>
+    </div>
+
+    <!-- JavaScript to handle popup display, greeting message, and thought of the day -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const popup = document.getElementById('thought_popup');
+            const closeBtn = document.getElementById('closeBtn');
+            const greeting = document.getElementById('greeting');
+            const userName = document.getElementById('userName');
+            const thoughtOfTheDay = document.getElementById('thoughtOfTheDay');
+    
+            // Function to get current time in IST
+            function getCurrentISTTime() {
+                const date = new Date();
+                const ISTOffset = 330; // IST offset in minutes (5 hours and 30 minutes)
+                const utc = date.getTime() + (date.getTimezoneOffset() * 60000);
+                const ISTTime = new Date(utc + (ISTOffset * 60000));
+                return ISTTime.getHours();
+            }
+    
+            // Function to set greeting message based on time
+            function setGreetingMessage() {
+                const currentHour = getCurrentISTTime();
+                if (currentHour >= 0 && currentHour < 12) {
+                    greeting.textContent = "Good Morning,";
+                } else if (currentHour >= 12 && currentHour < 18) {
+                    greeting.textContent = "Good Afternoon,";
+                } else {
+                    greeting.textContent = "Good Evening,";
+                }
+            }
+    
+            // Function to fetch the thought of the day from API
+            async function fetchThoughtOfTheDay() {
+                const url = 'https://thought-of-the-day.p.rapidapi.com/thought';
+                const options = {
+                    method: 'GET',
+                    headers: {
+                        'x-rapidapi-key': '930d0580f0msh529f49f5f3f8ac1p1f6aa4jsn8383b8c4b83d',
+                        'x-rapidapi-host': 'thought-of-the-day.p.rapidapi.com'
+                    }
+                };
+    
+                try {
+                    const response = await fetch(url, options);
+                    const result = await response.json();
+                    return result.data; // Assuming the API returns an object with a 'data' property containing the thought
+                } catch (error) {
+                    console.error(error);
+                    return "Failed to fetch thought of the day.";
+                }
+            }
+    
+            // Function to update thought of the day section
+            async function updateThoughtOfTheDay() {
+                // Check if thought of the day is stored and not expired in local storage
+                const storedThought = localStorage.getItem('thoughtOfTheDay');
+                const storedExpiration = localStorage.getItem('thoughtExpiration');
+                const currentTimestamp = new Date().getTime();
+    
+                if (storedThought && storedExpiration) {
+                    const expirationTimestamp = parseInt(storedExpiration, 10);
+                    if (currentTimestamp < expirationTimestamp) {
+                        // Use stored thought
+                        thoughtOfTheDay.textContent = storedThought;
+                        return;
+                    }
+                }
+    
+                // Fetch new thought of the day from API
+                const thought = await fetchThoughtOfTheDay();
+                thoughtOfTheDay.textContent = thought;
+    
+                // Store thought and expiration in local storage
+                const expiration = new Date();
+                expiration.setHours(24, 0, 0, 0); // Set expiration to midnight next day in IST
+                localStorage.setItem('thoughtOfTheDay', thought);
+                localStorage.setItem('thoughtExpiration', expiration.getTime().toString());
+            }
+    
+            // Show popup, set greeting message, fetch thought of the day, and update every 24 hours
+            setGreetingMessage();
+            updateThoughtOfTheDay();
+            popup.style.display = 'flex';
+    
+            // Close popup when close button is clicked
+            closeBtn.addEventListener('click', function() {
+                popup.style.display = 'none';
+            });
+    
+            // Update thought of the day every 24 hours at 12:00 AM
+            setInterval(updateThoughtOfTheDay, 24 * 60 * 60 * 1000); // Update every 24 hours
+    
+            // Simulating getting user name from backend
+            userName.textContent = "John Doe"; // Replace with dynamic user name
+        });
+    </script>
+
+</body>
+
+</html>
