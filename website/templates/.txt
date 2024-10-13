@@ -1,0 +1,1 @@
+ <img alt="difference between C and C++" class="img-fluid rounded" src="/static/images/assets-c/Keywords Table.png"/>

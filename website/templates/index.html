@@ -1,0 +1,360 @@
+{% extends "base.html" %}
+{% block title%}The Royal Coding | Learn and Share Expert Coding Insights {%endblock%}
+
+
+{% block head %}
+    <meta name="description" content="Learn coding tutorials, practice problems, and earn rewards by writing and sharing coding or tech topics related blogs. Stay updated with The Royal Coding.">
+    <meta name="keywords" content="coding tutorials, practice problems, blogs, coding expereince, technology insights, software development, programming resources">
+    <link rel="canonical" href="https://theroyalcoding.com/">
+    <meta property="og:title" content="The Royal Coding | Learn and Share Expert Coding Insights ">
+    <meta property="og:description" content="Learn coding tutorials, practice problems, and earn rewards by writing and sharing coding or tech topics related blogs. Stay updated with The Royal Coding.">
+    <meta property="og:url" content="https://www.theroyalcoding.com/">
+    <meta property="og:image" content="https://www.theroyalcoding.com/static/images/logo.png">
+    <meta property="og:site_name" content="The Royal Coding">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Royal Coding | Learn and Share Expert Coding Insights ">
+    <meta name="twitter:description" content="Learn coding tutorials, practice problems, and earn rewards by writing and sharing coding or tech topics related blogs. Stay updated with The Royal Coding.">
+    <meta name="twitter:image" content="https://www.theroyalcoding.com/static/images/logo.png">
+    <meta name="twitter:url" content="https://www.theroyalcoding.com/">
+    <meta name="twitter:site" content="@TheRoyalCoding">
+{{ super() }} <!-- This includes the default CSS and JS from the base template -->
+
+{% endblock  %}
+
+
+{% block content%}
+ <section class="text-gray-800 body-font">
+      <div class="container mx-auto flex py-24 md:flex-row flex-col items-center">
+        <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+          <h1 class="font-bold text-3xl lg:text-4xl text-black leading-tight mb-4 lg:mb-6">Welcome to <span style="color:#ffa500;">The Royal Coding</span> <br>Learn Programming languages</h1>
+          <p class="leading-relaxed text-md">
+Welcome to our website! Explore a variety of coding courses and tackle practice problems to improve your skills. Share your tech and coding experiences by writing blogs, and join our community to learn, practice, and connect with fellow coders.
+</p>
+          <div class="flex justify-center">
+          <a href="#section-b"> <button class="button prebtn inline-flex text-white border-0 py-2 px-6 focus:outline-none hover:bg-black rounded text-lg ">Start Learning</button></a> 
+           <a href="#courses"><button class="ml-4 inline-flex text-gray-800 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg prebtn">Courses</button></a> 
+          </div>
+        </div>
+        <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+          <img class="object-cover object-center rounded cursor-pointer" alt="The Royal Coding" src="{{ url_for('static', filename='/images/TRC.png') }}">
+        </div>
+      </div>
+    </section>
+    
+  
+    <div class="slideshow-container ">
+      <div class="mySlides fade mt-4">
+        <a href="https://www.youtube.com/watch?v=njbwCPDfCvU&list=PLjvlxSpzow8EElwgOw1AHTu_cdXSr2NOf">  <img src="{{ url_for('static', filename='/images/web-scapping-course.png') }}" style="width:100%; border-radius: 18px;"></a>
+        </div>
+      <div class="mySlides fade mt-4">
+        <a href="https://youtu.be/PpqFWHjGZeU?feature=shared"><img src="{{ url_for('static', filename='/images/Weather-app.png') }}" style="width:100%; border-radius: 18px;"></a>
+       </div>
+       <div class="mySlides fade mt-4">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEuWJA6saJlVPvVhGSDtLCzMiO-2ED0fNYuUI3TZrcaT0dkA/viewform"><img src="{{ url_for('static', filename='/images/work-with-us.jpg') }}" style="width:100%; border-radius: 18px;"></a>
+       </div>
+     
+    
+      <a class="prev" onclick="plusSlides(-1)">❮</a>
+      <a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+
+    <section  class="text-gray-800 body-font">
+      <div class="container py-24 mx-auto">
+        <div class="flex flex-col">
+          <div class="h-1 bg-gray-200 rounded overflow-hidden">
+            <div class="w-24 h-full" style="background-color: #ffa500;"></div>
+          </div>
+          <div class="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
+            <h3 class="sm:w-2/5 text-gray-900 font-medium title-font text-2xl mb-2 sm:mb-0 whity">Our Courses</h3>
+            <p class="sm:w-3/5 leading-relaxed text-md sm:pl-10 pl-0 grayy">Our courses are absolutely free and will make you feel like you're taking an expensive course. You can learn at your own pace and if you have any questions or concerns, please don't hesitate to contact us. We're here to help you succeed! &nbsp; &nbsp; <span>
+            <a href="/courses" class="button1 underline  inline-flex items-center cursor-pointer ">See all courses
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a></span></p>
+          </div>
+        </div>
+        <div id="section-b" class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
+          <div class="carding p-4 md:w-1/3 sm:mb-0 mb-6">
+              <div class="rounded-lg overflow-hidden shadow-lg border border-gray-200">
+                  <img alt="C Programming" class="object-cover object-center h-64 w-full cursor-pointer" src="{{ url_for('static', filename='/images/C.png') }}">
+              </div>
+              <div class="mt-5">
+                  <h2 class="text-xl font-medium text-gray-900 font-bold">C Programming</h2>
+                  <ul class="text-base leading-relaxed mt-2 list-disc list-inside">
+                      <li>The C programming language is the recommended language for creating embedded system drivers.</li>
+                      <li>The availability of machine-level hardware APIs, C compilers, dynamic memory allocation</li>
+                  </ul>
+                  <a href="C/Introduction of C language.html" class="button1 inline-flex items-center mt-3">Learn Now
+                      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                          <path d="M5 12h14M12 5l7 7-7 7"></path>
+                      </svg>
+                  </a>
+              </div>
+          </div>
+          <div class="carding p-4 md:w-1/3 sm:mb-0 mb-6">
+              <div class="rounded-lg overflow-hidden shadow-lg border border-gray-200">
+                  <img alt="C++ Programming" class="object-cover object-center h-64 w-full cursor-pointer" src="{{ url_for('static', filename='/images/C++.png') }}">
+              </div>
+              <div class="mt-5">
+                  <h2 class="text-xl font-medium text-gray-900 font-bold">C++ Programming</h2>
+                  <ul class="text-base leading-relaxed mt-2 list-disc list-inside">
+                      <li>C++ is a high-level general-purpose programming language created by Bjarne Stroustrup as an extension of C.</li>
+                      <li>It supports multiple programming paradigms including structured, object-oriented, and generic programming.</li>
+                  </ul>
+                  <a href="C++/Introduction of C++.html" class="button1 inline-flex items-center mt-3">Learn Now
+                      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                          <path d="M5 12h14M12 5l7 7-7 7"></path>
+                      </svg>
+                  </a>
+              </div>
+          </div>
+          <div class="carding p-4 md:w-1/3 sm:mb-0 mb-6">
+              <div class="rounded-lg overflow-hidden shadow-lg border border-gray-200">
+                  <img alt="Python Programming" class="object-cover object-center h-64 w-full cursor-pointer" src="{{ url_for('static', filename='/images/Python.png') }}">
+              </div>
+              <div class="mt-5">
+                  <h2 class="text-xl font-medium text-gray-900 font-bold">Python Programming</h2>
+                  <ul class="text-base leading-relaxed mt-2 list-disc list-inside">
+                      <li>Python is a high-level, general-purpose programming language known for its readability and simplicity.</li>
+                      <li>It supports multiple programming paradigms including procedural, object-oriented, and functional programming.</li>
+                  </ul>
+                  <a href="#!" class="button1 inline-flex items-center mt-3">Learn Now
+                      <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                          <path d="M5 12h14M12 5l7 7-7 7"></path>
+                      </svg>
+                  </a>
+              </div>
+          </div>
+      </div>
+      
+      
+        
+      </div>
+      
+    </section>
+    <section class="text-gray-800 body-font">
+      <div class="container mx-auto flex px-5 py-14 md:flex-row flex-col items-center">
+        <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+          <img class="object-cover object-center rounded" alt="Blog The Royal Coding" src="{{ url_for('static', filename='/images/Blog.jpg') }}">
+        </div>
+        <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+          <h3 class="font-bold text-3xl lg:text-4xl text-black leading-tight mb-4 lg:mb-6">Earn Rewards by Writing Blogs in Just 2 Minutes! ✍️💰</h3>
+
+          <p class="mb-8 leading-relaxed "> Write blogs on any <b>coding language</b>, explore different <b>tech topics</b>, or share your <b>personal coding experiences</b>. Whether you're a experienced developer or just starting out, this is your space to <b>express your ideas</b>, <b>connect with fellow enthusiasts</b>, and <b>showcase your expertise</b>. <br> <b>Don’t wait— Write blogs today and let your voice be heard!</b></p>
+          <div class="flex justify-center">
+           
+            <a href="/editor"><button class="ml-4 inline-flex text-white border-0 py-2 px-6 focus:outline-none  rounded text-lg">Start now</button></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="text-gray-800 body-font">
+      <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+        <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+          <h3 class="font-bold text-4xl lg:text-5xl text-black leading-tight mb-4 lg:mb-6">Want a Smile😊 in your face like this👉
+        </h3>
+        
+          <p class="mb-8 leading-relaxed">Check out coding meme page on <b>The Royal Coding</b> for hilarious tech <b>jokes</b> and <b>memes</b> only developers will get. It's the perfect way to take a break from all that intense coding and have a <b>good laugh</b>. So make sure to check it out when you get a chance - I promise it'll be worth your while! <b>Happy coding and meme-scrolling! 😉👩‍💻🤣</b></p>
+          <div class="flex justify-center">
+            <a href="/memes"><button class="inline-flex text-white border-0 px-6 focus:outline-none rounded text-lg">Visit Now</button></a>
+            
+          </div>
+        </div>
+        <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+          <img class="object-cover object-center rounded" alt="Memes The Royal Coding.jpg" src="{{ url_for('static', filename='/images/Memes.jpg') }}">
+        </div>
+      </div>
+    </section>
+
+    
+    <h3 id="courses" class="m-4 text-black text-2xl"><b>Python Tutorials</b></h3>
+    <div class="slider-container max-w-full mx-auto rounded-md">
+      <div class="slider rounded-md">
+        <!-- Cards go here -->
+        <div class="card w-full sm:w-1/2 lg:w-1/4 p-2 box-border">
+           
+            <a href="https://www.youtube.com/watch?v=72IenpdXaGs" target="_blank"> 
+            <img src="{{ url_for('static', filename='/images/Installation-Python.png') }}" alt="Image 1" class="card-image w-full block">
+          
+          <div class="card-content text-center p-2 bg-white">
+            <h6 class="card-heading text-lg font-bold">Installation of Python Programming in VS Code</a></h6>
+          </div>
+        </div>
+        <div class="card w-full sm:w-1/2 lg:w-1/4 p-2 box-border">
+          <a href="https://www.youtube.com/watch?v=yJ7nCbqliRE" target="_blank"> 
+            <img src="{{ url_for('static', filename='/images/Strings.png') }}" alt="Strings in Python Programming" class="card-image w-full block">
+          <div class="card-content text-center p-2 bg-white">
+            <h6 class="card-heading text-lg font-bold">Strings in Python Programming </a></h6>
+          </div>
+        </div>
+        <div class="card w-full sm:w-1/2 lg:w-1/4 p-2 box-border">
+          <a href="https://www.youtube.com/watch?v=OcEY-q3pG94" target="_blank"> 
+            <img src="{{ url_for('static', filename='/images/Function-Python.png') }}" alt="Functions in Python Programming" class="card-image w-full block">
+          <div class="card-content text-center p-2 bg-white">
+            <h6 class="card-heading text-lg font-bold">Functions in Python Programming </a></h6>
+          </div>
+        </div>
+        <div class="card w-full sm:w-1/2 lg:w-1/4 p-2 box-border">
+          <a href="https://www.youtube.com/watch?v=6f83bZfiBfE" target="_blank"> 
+            <img src="{{ url_for('static', filename='/images/Random-Module.png') }}" alt="Random Module in one video of Python Programming" class="card-image w-full block">
+          
+          
+          <div class="card-content text-center p-2 bg-white">
+            <h6 class="card-heading text-lg font-bold">Random Module in one video of Python Programming </a></h6>
+          </div>
+        </div>
+        <div class="card w-full sm:w-1/2 lg:w-1/4 p-2 box-border" >
+          <a href="https://www.youtube.com/watch?v=v14owlSpUME" target="_blank"> 
+            <img src="{{ url_for('static', filename='/images/Error-Handling.png') }}" alt="Error Handling in one video in Python Programming" class="card-image w-full block">
+          <div class="card-content text-center p-2 bg-white">
+            <h6 class="card-heading text-lg font-bold">Error Handling in one video in Python Programming </a></h6>
+          </div>
+        </div>
+        <div class="card w-full sm:w-1/2 lg:w-1/4 p-2 box-border" >
+          <a href="https://www.youtube.com/watch?v=ro_B8RIBDaI" target="_blank"> 
+            <img src="{{ url_for('static', filename='/images/Introduction-OOPS.png') }}" alt="Introduction of Object Oriented Programming in Python" class="card-image w-full block">
+          
+          <div class="card-content text-center p-2 bg-white">
+            <h6 class="card-heading text-lg font-bold">Introduction of Object Oriented Programming in Python </a></h6>
+          </div>
+        </div>
+        
+        <div class="card w-full sm:w-1/2 lg:w-1/4 p-2 box-border" >
+          <a href="https://www.youtube.com/watch?v=1DbfBfzRiac" target="_blank">
+            <img src="{{ url_for('static', filename='/images/Abstraction.png') }}" alt="Abstraction in Python Programming" class="card-image w-full block">
+          
+          <div class="card-content text-center p-2 bg-white">
+            <h6 class="card-heading text-lg font-bold">Abstraction in Python Programming </a></h6>
+          </div>
+        </div>
+        <div class="card w-full sm:w-1/2 lg:w-1/4 p-2 box-border">
+          <a href="https://www.youtube.com/watch?v=PpqFWHjGZeU" target="_blank"> 
+            <img src="{{ url_for('static', filename='/images/Weather-app.png') }}" alt="Weather App in Python Programming" class="card-image w-full block">
+          
+          <div class="card-content text-center p-2 bg-white">
+            <h6 class="card-heading text-lg font-bold">Weather App in Python Programming </a></h6>
+          </div>
+        </div>
+        <!-- Repeat cards as needed -->
+      </div>
+      <button class="prev-button" onclick="scrollSlider(-1)">❮</button>
+      <button class="next-button" onclick="scrollSlider(1)">❯</button>
+    </div>
+  
+    <h3 class="m-4 text-black text-2xl"><b>C Tutorials</b></h3>
+    <div class="slider-container max-w-full mx-auto rounded-md">
+      <div class="slider rounded-md">
+        <!-- Cards go here -->
+        <div class="card w-full sm:w-1/2 lg:w-1/4 p-2 box-border">
+          <a href="https://www.youtube.com/watch?v=8dI2IcCmp2Y" target="_blank"> 
+            <img src="{{ url_for('static', filename='/images/Installation-C.png') }}" alt="Installation of C Programming in one video" class="card-image w-full block">
+          
+          <div class="card-content text-center p-2 bg-white">
+            <h6 class="card-heading text-lg font-bold">Installation of C Programming in one video</a></h6>
+          </div>
+        </div>
+        <div class="card w-full sm:w-1/2 lg:w-1/4 p-2 box-border">
+          <a href="https://www.youtube.com/watch?v=U6fEpFhvR_o" target="_blank"> 
+            <img src="{{ url_for('static', filename='/images/Keywords-C.png') }}" alt="Keywords and Identifier in C" class="card-image w-full block">
+          
+          <div class="card-content text-center p-2 bg-white">
+            <h6 class="card-heading text-lg font-bold">Keywords and Identifier in C</a></h6>
+          </div>
+        </div>
+        <div class="card w-full sm:w-1/2 lg:w-1/4 p-2 box-border">
+          <a href="https://www.youtube.com/watch?v=IBkdzZ5Vf9M" target="_blank"> 
+            <img src="{{ url_for('static', filename='/images/Input-Output-C.png') }}" alt="Input and Output Functions in C Programming" class="card-image w-full block">
+          <div class="card-content text-center p-2 bg-white">
+            <h6 class="card-heading text-lg font-bold">Input and Output Functions in C Programming </a></h6>
+          </div>
+        </div>
+        <div class="card w-full sm:w-1/2 lg:w-1/4 p-2 box-border">
+          <a href="https://www.youtube.com/watch?v=IdsQlDmkiE0" target="_blank"> 
+            <img src="{{ url_for('static', filename='/images/For-C.png') }}" alt="For Loop in C Programming" class="card-image w-full block">
+          <div class="card-content text-center p-2 bg-white">
+            <h6 class="card-heading text-lg font-bold">For Loop in C Programming </a></h6>
+          </div>
+        </div>
+        <div class="card w-full sm:w-1/2 lg:w-1/4 p-2 box-border">
+          <a href="https://www.youtube.com/watch?v=WXXaIB6Sczo" target="_blank"> 
+            <img src="{{ url_for('static', filename='/images/Basic-Problems-C.png') }}" alt="Basic Practice Problems of C Programming Language" class="card-image w-full block">
+          
+          
+          <div class="card-content text-center p-2 bg-white">
+            <h6 class="card-heading text-lg font-bold">Basic Practice Problems of C Programming Language</a></h6>
+          </div>
+        </div>
+        <div class="card w-full sm:w-1/2 lg:w-1/4 p-2 box-border">
+          <a href="https://www.youtube.com/watch?v=OcEY-q3pG94" target="_blank"> 
+            <img src="{{ url_for('static', filename='/images/Functions-C.png') }}" alt="Functions in C Programming Language" class="card-image w-full block">
+          
+          <div class="card-content text-center p-2 bg-white">
+            <h6 class="card-heading text-lg font-bold">Functions in C Programming Language </a></h6>
+          </div>
+        </div>
+
+        <div class="card w-full sm:w-1/2 lg:w-1/4 p-2 box-border">
+          <a href="https://www.youtube.com/watch?v=MwJX9m1x6PQ" target="_blank"> 
+            <img src="{{ url_for('static', filename='/images/2-D-Array.png') }}" alt="2-D Array in C Programming Language " class="card-image w-full block">
+          <div class="card-content text-center p-2 bg-white">
+            <h6 class="card-heading text-lg font-bold">2-D Array in C Programming Language </a></h6>
+          </div>
+        </div>
+        
+        <div class="card w-full sm:w-1/2 lg:w-1/4 p-2 box-border">
+          <a href="https://www.youtube.com/watch?v=Y5DAYOu7GB4" target="_blank"> 
+            <img src="{{ url_for('static', filename='/images/Call-by-Value-Reference.png') }}" alt="Call by Value and Call by Reference in C Programming Language"  class="card-image w-full block">
+          
+          <div class="card-content text-center p-2 bg-white">
+            <h6 class="card-heading text-lg font-bold">Call by Value and Call by Reference in C Programming Language</a> </h6>
+          </div>
+        </div>
+        <!-- Repeat cards as needed -->
+      </div>
+      <button class="prev-button" onclick="scrollSlider(-1)">❮</button>
+      <button class="next-button" onclick="scrollSlider(1)">❯</button>
+    </div>
+  
+  
+  
+    <section class="text-gray-600 body-font">
+      <div class="container px-5 py-24 mx-auto">
+        <div class="lg:flex lg:items-center lg:justify-center">
+          <!-- Profile Photo Section -->
+          <div class="bg-white rounded-lg p-8 flex justify-center items-center lg:w-1/2 lg:mr-8">
+            <img src="{{ url_for('static', filename='/images/Vishesh.JPG') }}" alt="Vishesh Namdev - The Royal Coding" class="rounded-full w-48 h-48 lg:w-56 lg:h-56 object-cover">
+          </div>
+    
+          <!-- Testimonial Content Section -->
+          <div class="lg:w-1/2 lg:ml-8">
+            <div class="bg-white rounded-lg p-8">
+              <!-- Quote Icon -->
+              <div class=" w-full text-center object-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="inline-block w-8 h-8 text-gray-400 mb-8" viewBox="0 0 975.036 975.036">
+                  <path d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z"></path>
+                </svg></div>
+              
+              <!-- Testimonial Text -->
+<p class="relative leading-relaxed text-lg">
+"I'm Vishesh, a passionate programmer and tech enthusiast. I love <b>learning</b> and <b>sharing</b> my knowledge with others. I believe that programming isn't just about <b>writing code;</b> it's about solving real-world problems and making a <b>positive</b> impact on people's lives. I'm excited to share my journey with you and help you learn <b>programming concepts</b> and <b>languages</b> through <b>blogging</b>, all while earning rewards in a fun and easy way." 
+</p>
+    
+              <!-- Divider -->
+              <span class="block w-12 h-1 rounded mt-6 mb-4" style="background-color: #ffa500;"></span>
+    
+              <!-- Testimonial Author -->
+              <h2 class="text-gray-900 font-medium title-font tracking-wider text-sm">Vishesh Namdev</h2>
+              <p class="text-gray-500">CEO and Founder</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+
+<script src="{{ url_for('static', filename='/js/script.js') }}"></script>
+
+
+{%endblock%}

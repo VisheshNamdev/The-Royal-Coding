@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block title %} Courses - The Royal Coding{% endblock %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore a wide range of programming courses at The Royal Coding. From C Programming to Python and Java, find the courses that match your learning goals and start enhancing your skills today.">
+    <meta name="keywords" content="programming courses, C programming, C++ programming, Python programming, Java programming, web scraping, learn programming">
+    <meta name="robots" content="index, follow">
+    
+    <!--google ads
+<meta name="google-adsense-account" content="ca-pub-9610398121068963">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9610398121068963"
+     crossorigin="anonymous"></script>
+code -->
+
+    <meta property="og:title" content="Recommended Programming Courses - The Royal Coding">
+    <meta property="og:description" content="Discover our recommended programming courses. Whether you're interested in C, C++, Python, or Java, find the right course to enhance your skills at The Royal Coding.">
+    <meta property="og:image" content="{{ url_for('static', filename='images/og-image.png') }}">
+    <meta property="og:url" content="https://theroyalcoding.com/courses">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Recommended Programming Courses - The Royal Coding">
+    <meta name="twitter:description" content="Explore our recommended programming courses and take your skills to the next level. From C to Python, find the best courses to suit your learning needs.">
+    <meta name="twitter:image" content="{{ url_for('static', filename='images/twitter-image.png') }}">
+
+    <link rel="canonical" href="https://theroyalcoding.com/courses">
+</head>
+
+<section class="py-8 px-3 text-gray-600 body-font">
+  <h1 class="sm:text-3xl text-2xl font-medium title-font text-center text-gray-900 mb-10">Recommended courses
+  </h1>
+
+<div id="section-b" class="flex flex-wrap  sm:-m-4 -mx-4 -mb-10 -mt-4">
+  <div class="carding p-4 md:w-1/3 sm:mb-0 mb-6">
+      <div class="rounded-lg overflow-hidden shadow-lg border border-gray-200">
+          <img alt="C Programming" class="object-cover object-center h-64 w-full cursor-pointer" src="{{ url_for('static', filename='/images/C.png') }}">
+      </div>
+      <div class="mt-5">
+          <h2 class="text-xl font-medium text-gray-900 font-bold">C Programming</h2>
+          <ul class="text-base leading-relaxed mt-2 list-disc list-inside">
+              <li>The C programming language is the recommended language for creating embedded system drivers.</li>
+              <li>The availability of machine-level hardware APIs, C compilers, dynamic memory allocation</li>
+          </ul>
+          <a href="/c" class="button1 inline-flex items-center mt-3">Learn Now
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+          </a>
+      </div>
+  </div>
+  <div class="carding p-4 md:w-1/3 sm:mb-0 mb-6">
+      <div class="rounded-lg overflow-hidden shadow-lg border border-gray-200">
+          <img alt="C++ Programming" class="object-cover object-center h-64 w-full cursor-pointer" src="{{ url_for('static', filename='/images/C++.png') }}">
+      </div>
+      <div class="mt-5">
+          <h2 class="text-xl font-medium text-gray-900 font-bold">C++ Programming</h2>
+          <ul class="text-base leading-relaxed mt-2 list-disc list-inside">
+              <li>C++ is a high-level general-purpose programming language created by Bjarne Stroustrup as an extension of C.</li>
+              <li>It supports multiple programming paradigms including structured, object-oriented, and generic programming.</li>
+          </ul>
+          <a href="/cpp" class="button1 inline-flex items-center mt-3">Learn Now
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+          </a>
+      </div>
+  </div>
+  <div class="carding p-4 md:w-1/3 sm:mb-0 mb-6">
+    <div class="rounded-lg overflow-hidden shadow-lg border border-gray-200">
+        <img alt="C++ Programming" class="object-cover object-center h-64 w-full cursor-pointer" src="{{ url_for('static', filename='/images/Python.png') }}">
+    </div>
+    <div class="mt-5">
+        <h2 class="text-xl font-medium text-gray-900 font-bold">Python Programming</h2>
+        <ul class="text-base leading-relaxed mt-2 list-disc list-inside">
+            <li>C++ is a high-level general-purpose programming language created by Bjarne Stroustrup as an extension of C.</li>
+            <li>It supports multiple programming paradigms including structured, object-oriented, and generic programming.</li>
+        </ul>
+        <a href="#!" class="button1 inline-flex items-center mt-3">Learn Now
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+        </a>
+    </div>
+</div>
+<div class="carding p-4 md:w-1/3 sm:mb-0 mb-6">
+  <div class="rounded-lg overflow-hidden shadow-lg border border-gray-200">
+      <img alt="C++ Programming" class="object-cover object-center h-64 w-full cursor-pointer" src="{{ url_for('static', filename='/images/Java-Programming.png') }}">
+  </div>
+  <div class="mt-5">
+      <h2 class="text-xl font-medium text-gray-900 font-bold">Java Programming</h2>
+      <ul class="text-base leading-relaxed mt-2 list-disc list-inside">
+          <li>Java is a widely-used programming language known for its portability across platforms. </li>
+          <li>It is designed for ease of use and efficiency in building robust applications.</li>
+      </ul>
+      <a href="#!" class="button1 inline-flex items-center mt-3">Learn Now
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+      </a>
+  </div>
+</div>
+  <div class="carding p-4 md:w-1/3 sm:mb-0 mb-6">
+      <div class="rounded-lg overflow-hidden shadow-lg border border-gray-200">
+          <img alt="Python Programming" class="object-cover object-center h-64 w-full cursor-pointer" src="{{ url_for('static', filename='/images/Web-Scrapping.png') }}">
+      </div>
+      <div class="mt-5">
+          <h2 class="text-xl font-medium text-gray-900 font-bold">Web Scrapping </h2>
+          <ul class="text-base leading-relaxed mt-2 list-disc list-inside">
+              <li>Web scraping involves retrieving data from websites to gather information for analysis or integration into other applications.</li>
+              <li>It automates the process of collecting data from multiple web pages, saving time and effort compared to manual data entry.</li>
+          </ul>
+          <a href="#!" class="button1 inline-flex items-center mt-3">Learn Now
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+          </a>
+      </div>
+  </div>
+</div>
+</section>
+{%endblock%}

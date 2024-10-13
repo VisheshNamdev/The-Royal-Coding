@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="Learn {{ page.title.replace('-', ' ').title() }} with very easy method also check out more tutorials of C++ Programming Language in The Royal Coding"> 
+<meta name="keywords" content="{{ page.title.replace('-', ' ') | replace(' in ', ',') | replace(' to ', ',') | replace(' and ', ',') | replace(' the ', ',') | replace(' of ', ',') | replace(' a ', ',') | replace(' is ', ',') | replace(' for ', ',') | replace(' on ', ',') | replace(' with ', ',') | replace(' as ', ',') | replace(' by ', ',') | replace(' at ', ',') | replace(' an ', ',') | replace(' ,', ',') | replace(', ,', ',') }}, C++ Programming Language, C++ Tutotrials, C++, Programming, Language, Coding, The Royal Coding">
+<meta name="author" content="The Royal Coding" />
+<title>{% block title %}{{ page.title.replace('-', ' ').title() }} {% endblock %} | C++ Programming Full Course - The Royal Coding</title>
+
+<!--google ads code -->
+<meta name="google-adsense-account" content="ca-pub-9610398121068963">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9610398121068963"
+     crossorigin="anonymous"></script>
+<!--google ads code -->
+
+
+
+<meta property="og:title" content=" {{ page.title.replace('-', ' ').title() }}">
+<meta property="og:description" content="Learn {{ page.title.replace('-', ' ').title() }} with very easy method also check out more tutorials of C++ Programming Language in The Royal Coding">
+<meta property="og:type" content="articles">
+<meta property="og:url" content="https://theroyalcoding.com/post/{{ page.title }}">
+<meta property="og:image" content="https://www.theroyalcoding.com/static/images/assets-c++/Cpp-Programming-Language.png">
+<meta property="og:site_name" content="The Royal Coding">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page.title }}">
+<meta name="twitter:description" content="Learn {{ page.title.replace('-', ' ').title() }} with very easy method also check out more tutorials of C++ Programming Language in The Royal Coding">
+<meta name="twitter:image" content="https://www.theroyalcoding.com/static/images/assets-c++/Cpp-Programming-Language.png">
+<meta name="twitter:site" content="@TheRoyalCoding">
+        
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/images/Fevicon-TRC.png') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/Style_Tuto.css') }}" />
+<script src="{{ url_for('static', filename='js/script_tuto.js') }}"></script>
+    </head>
+    
+    <body>
+        <!-- Responsive navbar-->
+        <div id="page-content-wrapper">
+            <!-- Top navigation-->
+            <nav class="navbar navbar-expand-lg border-bottom" id="navbar">
+                <div class="container-fluid">
+                  <div class="flex justify-between items-center">
+                    <a href="/">
+                      <img class="mt-1 imagelogo w-11 h-11 inline" src="{{ url_for('static', filename='/images/logo.png') }}"></a>
+                   
+                    <span class="text-black dark:text-white cursor-pointer m-1" style="font-size: 20px;">
+                     <a href="/" class="hover:text-black"> <b>The Royal Coding</b></a>
+                     </span>
+                    </span>
+                  </div>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse text-md" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                      <li class="nav-item active">
+                        <a class="nav-link" style="font-weight: 600;" href="/">Home</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false"><b>Tutorials</b></a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="/c"><i class="fa-solid fa-c"></i>&nbsp;
+                            &nbsp;<b>C </b></a>
+                          <a class="dropdown-item" href="/cpp"><i
+                              class="icon-cplusplus"></i>&nbsp;&nbsp;<b>C++ </b></a>
+                          <a class="dropdown-item" href="/python"><i class="fa-brands fa-python"></i>&nbsp;&nbsp;<b>Python </b></a>
+                          <a class="dropdown-item" href="/java"><i class="fa-brands fa-java"></i>&nbsp;&nbsp;<b>Java</b> </a>
+                        </div>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false"><b>Practice Programs</b></a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="/basic-practice-problem"><i
+                              class="fa-solid fa-angles-down"></i>&nbsp;&nbsp;<b>Basic Level</b></a>
+                          <a class="dropdown-item" href="/moderate-practice-problems"><i
+                              class="fa-solid fa-align-justify"></i>&nbsp;&nbsp; <b>Moderate Level</b></a>
+                          <a class="dropdown-item" href="/advance-practice-problems"><i
+                              class="fa-solid fa-angles-up"></i>&nbsp;&nbsp;<b>Advance Level</b></a>
+                        </div>
+                      </li>
+                      <li class="nav-item dropdown"><a class="nav-link" href="/posts"><b>Blogs </b></a></li>
+                      <li class="nav-item active"><a class="nav-link" href="/contact"><b>Contact us</b></a></li>
+                      {% if user.is_authenticated %}
+                    
+                      <li class="user_auth nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">
+                          <span class="user-icon">{{ user.username[0].capitalize() }}</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDropdown">
+          
+                          <a class="dropdown-item" href="/user/{{ user.username }}"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;<b>My
+                              Profile</b></a>
+          
+                          <a class="dropdown-item" href="/myblogs"><i class="fa-solid fa-newspaper"></i>&nbsp;&nbsp;<b>My
+                              Articles</b></a>
+                          <a class="dropdown-item" href="/user/bookmarked"><i
+                              class="fa-solid fa-bookmark"></i>&nbsp;&nbsp;<b>Saved Articles</b></a>
+                          <a class="dropdown-item" href="/edit_profile"><i class="fa-solid fa-pencil-alt"></i>&nbsp;&nbsp;<b>Edit
+                              Profile</b></a>
+                          <a class="dropdown-item" href="/logout"><i
+                              class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;<b>Logout</b></a>
+                        </div></div>
+                      </li>
+                      {% else %}
+                      <li class="nav-item active">
+                        <a class="nav-link" href="/login" style="background-color: white;"><b>Login</b></a>
+                      </li>
+                      <li class="nav-item active">
+                        <a class="nav-link" href="/signup" style="background-color: white;"><b>Sign up</b></a>
+                      </li>
+                      {% endif %}
+                    </ul>
+                 
+          
+                </div>
+              </nav>
+            <button  onclick="topFunction()" id="myBtn" title="Go to top"><i
+              class="fa-solid fa-circle-chevron-up fa-beat"></i></button>
+
+        <!-- Page content-->
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Post content-->
+                    <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <!-- Post title-->
+                            <h1 class="fw-bolder mb-1">{{ page.title.replace('-', ' ').title() }}</h1>
+                            <!-- Post meta content-->
+                            <div class="text-muted fst-italic mb-2 whity">{{ page.post_date }}</div>
+                            <!-- Post categories-->
+                            <a class="badge bg-secondary text-decoration-none link-light" href="/python">Python</a>
+                        <a class="badge bg-secondary text-decoration-none link-light" href="/c">C</a>
+                        <a class="badge bg-secondary text-decoration-none link-light" href="/cpp">C++</a>
+                        <a class="badge bg-secondary text-decoration-none link-light" href="/java">Java</a>
+                        </header>
+                        <!-- Preview image figure-->
+                        <figure class="mb-4">
+                          <img class="img-fluid rounded" src="{{ url_for('static', filename='images/assets-c++/Cpp-Programming.png') }}" alt="C++ Programming Language" />
+                      </figure>
+                        <!-- Post content-->
+                        {{ page.content | safe }}
+
+                    </article>
+                    <!-- Comments section-->
+
+                </div>
+
+
+                <!-- Side widgets-->
+
+                <div class="col-lg-4">
+                  <!--7 Introduction of C++ language-->
+                  <div class="card mb-4 mt-4">
+                    <div class="card-header">Introduction</div>
+                    <div class="card-body">
+                    <div class="row">
+                    <ul class="list-unstyled mb-0">
+                    
+                    <li><a href="/cpp/introduction-of-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;What is C++ & Hello World in C++</a></li>
+                    <li><a href="/cpp/variables-and-comments-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Variables and Comments</li>
+                    <li><a href="/cpp/data-types-and-constants-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Data types and Constants </a></li>
+                    <li><a href="/cpp/literals-and-escape-sequence-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Literals and Escape Sequence</a></li>
+                    <li><a href="/cpp/input-and-ouput-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;C++ I/O</a></li>
+                    <li><a href="/cpp/operators-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;C++ Operators</a></li>
+                    <li><a href="/cpp/basic-practice-problems-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Related Questions</a></li>
+                    
+                    </ul>
+                    </div>
+                    </div> 
+                    </div>
+                    
+                                  <!--8 Control flow of C++ language-->
+                    <div class="card mb-4 mt-4">
+                      <div class="card-header">Control Flow and Decision Making</div>
+                      <div class="card-body">
+                      <div class="row">
+                      <ul class="list-unstyled mb-0">
+                      <li><a href="/cpp/if-else-statement-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;C if and if...else statement</a></li>
+                      <li><a href="/cpp/switch-statement-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Switch Case statements</a></li>
+                      <li><a href="/cpp/break-continue-and-goto-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;C Break/Continue and goto </a></li>
+      
+                      <li><a href="for-loop-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;C for Loop</a></li>
+                      <li><a href="/cpp/while-loop-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;while loop in C</a></li>
+                      <li><a href="/cpp/do-while-loop-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;do-while loop in C </a></li>
+                      <li><a href="/cpp/control-flow-and-decison-making-practice-problems-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Related Quesitions</a></li>
+                      </ul>
+                      </div>
+                      </div>
+                      </div>
+                    
+                                  <!--6 Functions in C++ language-->
+                    <div class="card mb-4 mt-4">
+                      <div class="card-header"> Functions</div>
+                      <div class="card-body">
+                      <div class="row">
+                      <ul class="list-unstyled mb-0">
+                      <li><a href="/cpp/functions-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;C++ Functions</a></li>
+                      <li><a href="/cpp/function-parameters-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Function Parameters </li>
+                      <li><a href="/cpp/call-by-value-and-call-by-reference-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Call by Value and Call by Reference</a></li>
+                      <li><a href="/cpp/function-overloading-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Function Overloading</a></li>
+                      <li><a href="/cpp/recursive-function-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Recursive Functions</a></li>
+                      <li><a href="/cpp/practice-problems-on-functions-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Related Questions</a></li>
+                      
+                      </ul>
+                      </div>
+                      </div>
+                      </div>
+  
+                <!--6 Arrays and Strings in C++-->
+  <div class="card mb-4 mt-4">
+  <div class="card-header">Arrays and Strings in C++</div>
+  <div class="card-body">
+  <div class="row">
+  <ul class="list-unstyled mb-0">
+  <li><a href="/cpp/array-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Arrays in C++</a></li>
+  <li><a href="/cpp/multidimensional-array-and-2-d-array-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Multidimensional Arrays</a></li>
+
+  <li><a href="/cpp/strings-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Strings Basic</a></li>
+  <li><a href="/cpp/string-functions-and-manipulation-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;String Functions </a></li>
+  <li><a href="/cpp/practice-problems-on-arrays-and-strings-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Related Quesitions</a></li>
+  
+                      </ul>
+                      </div>
+                      </div>
+                      </div>
+  
+                <!--3 Pointers of C++ language-->
+  <div class="card mb-4 mt-4">
+  <div class="card-header">Pointers in C</div>
+  <div class="card-body">
+  <div class="row">
+  <ul class="list-unstyled mb-0">
+  <li><a href="/cpp/pointers-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Basics of Pointers</a></li>
+  <li><a href="/cpp/practice-problems-on-pointers-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Related Quesitions</a></li>
+  </ul>
+  </div>
+  </div>
+  </div>
+  
+                <!--7 Object-Oriented Programming of C++ language-->
+  <div class="card mb-4 mt-4">
+  <div class="card-header"> Object-Oriented Programming</div>
+  <div class="card-body">
+  <div class="row">
+  <ul class="list-unstyled mb-0">
+  <li><a href="/cpp/basics-of-object-oriented-programming-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Basics of OOP's and Classes and Objects</a></li>
+  <li><a href="/cpp/constructors-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Constructors</a></li>
+  <li><a href="/cpp/encapsulation-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Encapsulation </a></li>
+  <li><a href="/cpp/inheritance-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Inheritance</a></li>
+  <li><a href="/cpp/polymorphism-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Polymorphism </a></li>
+  <li><a href="/cpp/abstraction-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Abstraction  </a></li>
+  <li><a href="/cpp/basics-of-object-oriented-programming-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Related Questions</a></li>
+  </ul>
+  </div>
+  </div>
+  </div>
+  
+                <!--3 File Handling of C++ language-->
+  <div class="card mb-4 mt-4">
+  <div class="card-header">File Handling</div>
+  <div class="card-body">
+  <div class="row">
+  <ul class="list-unstyled mb-0">
+  <li><a href="/cpp/basics-of-file-handling-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Basics of File Handling</a></li>
+  <li><a href="/cpp/file-handling-operations-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Operations of File Handling</a></li>
+  <li><a href="/cpp/practice-problems-on-file-handling-in-c++"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Related Quesitions</a></li>
+  
+  </ul>
+  </div>
+  </div>
+  </div>
+  
+                    <!--6 More links-->
+                    <div class="card mb-4 mt-4">
+                        <div class="card-header"><b>More Links</b></div>
+                        <div class="card-body">
+                          <div class="row">
+                          <ul class="list-unstyled mb-0">
+                        <li><a href="/"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Home</a></li>
+                        <li><a href="/basic-practice-problem"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Basic  Practice Problems</a></li>
+                        <li><a href="/moderate-practice-problems"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Moderate Practice Problems</a></li>
+                        <li><a href="/advance-practice-problems"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Advance Practice Problems</a></li>
+                        <li><a href="/memes"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Code with Fun(Memes)</a></li>
+                        <li><a href="/posts"><i class="fa-regular fa-circle-check"></i>&nbsp&nbsp;Blogs</a></li></ul>
+                    </div>
+                  </div>
+                </div>
+  
+                </div>
+            </div>
+        </div>
+        <!-- Footer-->
+        <footer class="text-gray-600 body-font">
+          <div class="container py-8 mx-auto flex items-center sm:flex-row flex-col">
+            <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+              <a ><img src="{{ url_for('static', filename='/images/logo.png') }}" class="w-14 h-10 rounded-md cursor-pointer" alt="The Royal Coding"></a>
+              <span class="ml-3 text-xl"><b>The Royal Coding</b></span>
+            </a>
+            <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4"><b>© 2023 theroyalcoding—</b>
+              <a href="https://www.instagram.com/theroyalcoding" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">@theroyalcoding</a>
+            </p>
+            <!-- Facebook -->
+            <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+              <a href="https://www.youtube.com/@TheRoyalCoding" target="_blank" class="text-gray-500">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                </svg>
+              </a>
+        
+              <!-- instagram -->
+        
+              <a href="https://www.instagram.com/@theroyalcoding" target="_blank" class="ml-3 text-gray-500">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                </svg>
+              </a>
+              <!-- linkedin -->
+              <a href="https://www.linkedin.com/company/theroyalcoding/" target="_blank" class="ml-3 text-gray-500">
+                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                  <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                </svg>
+              </a>
+              <!-- twitter -->
+              <a href="https://www.instagram.com/@theroyalcoding" target="_blank" class="ml-3 text-gray-500">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                </svg>
+              </a>
+             
+             
+            </span>
+          </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Core theme JS-->
+        <script>
+          
+          let mybutton = document.getElementById("myBtn");      
+          window.onscroll = function() {scrollFunction()};
+          
+          function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+              mybutton.style.display = "block";
+            } else {
+              mybutton.style.display = "none";
+            }
+          }
+          function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+
+  function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+      }
+
+    function copyCode() {
+    var codeSection = document.getElementById("code-section");
+    var range = document.createRange();
+    range.selectNode(codeSection);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges();
+    alert("Code copied to your clipboard!");
+  }       
+        </script>
+    </body>
+</html>

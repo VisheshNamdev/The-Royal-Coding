@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+{% block title %}Code with Fun Memes{% endblock %}
+
+
+
+{% block content %}
+
+<head>
+    
+    <!--google ads
+<meta name="google-adsense-account" content="ca-pub-9610398121068963">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9610398121068963"
+     crossorigin="anonymous"></script>
+code -->
+
+  <style>
+    .memes-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .meme {
+      margin: 20px;
+      /* align-items: ; */
+
+      align-items: center;
+      object-fit: fill;
+      transition: transform 0.3s ease;
+
+    }
+
+    .meme:hover {
+      transform: scale(1.1);
+      /* Apply a 360-degree spin on hover */
+    }
+
+    .load-more {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ffa500;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .load-more:hover {
+      background-color: black;
+      color: #ffa500;
+    }
+
+    .meme img {
+      border: 3px solid white;
+      /*  #ffa500;*/
+      border-radius: 10px;
+      height: inherit;
+      background-color: rgba(255, 255, 255, 0.15);
+      /* Adjust the background color and opacity */
+      backdrop-filter: blur(10px);
+      /* Adding blur effect */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    }
+
+    .memes-container .meme {
+      opacity: 0;
+      /* Initially hide the cards */
+      animation: fadeInAnimation 1s ease forwards;
+      /* Animation */
+    }
+
+    /* Keyframes for fading in each card */
+    @keyframes fadeInAnimation {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Add animation delay to each card */
+    .memes-container .meme:nth-child(1) {
+      animation-delay: 1s;
+      /* Adjust delay for each card */
+    }
+
+    .memes-container .meme:nth-child(2) {
+      animation-delay: 2s;
+      /* Adjust delay for each card */
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #7843E6;
+      color: white;
+
+    }
+
+    .footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    .logo-box {
+      max-width: 100%;
+      text-align: center;
+      /* Optional: Center the image within the container */
+    }
+
+    .logo-box img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      /* This ensures the image doesn't have any extra space below it */
+      margin: 0 auto;
+      /* Optional: Center the image within the container */
+    }
+
+    @media (max-width: 600px) {
+      .logo-box img {
+        max-width: 50%;
+        /* Adjust the percentage as needed for smaller screens */
+      }
+    }
+  </style>
+</head>
+<section>
+  <div class="logo-box">
+    <img src="{{ url_for('static', filename='/images/Programming-Memes.png') }}"
+      alt="Programming Memes - The Royal Coding" style="border: none; box-shadow: none;">
+  </div>
+
+
+  <div class="layer">
+
+    <div class="memes-container grid-wapper">
+
+    </div>
+    <button class="load-more">Load More</button>
+  </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  const url = 'https://programming-memes-images.p.rapidapi.com/v1/memes';
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '817f22dca9mshf83e13b922ca667p1e35aajsnac71c2d28bd1',
+      'X-RapidAPI-Host': 'programming-memes-images.p.rapidapi.com'
+    }
+  };
+
+  const memesContainer = document.querySelector('.memes-container');
+  const loadMoreButton = document.querySelector('.load-more');
+
+  let offset = 0;
+  const limit = 12;
+
+  async function fetchMemes() {
+    try {
+      const response = await fetch(`${url}?offset=${offset}&limit=${limit}`, options);
+      const result = await response.json();
+      displayMemes(result);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  function displayMemes(memes) {
+    memes.forEach(meme => {
+      const memeElement = document.createElement('div');
+      memeElement.classList.add('meme');
+
+      const image = document.createElement('img');
+      image.src = meme.image;
+      image.alt = meme.title;
+
+      memeElement.appendChild(image);
+      memesContainer.appendChild(memeElement);
+    });
+  }
+
+  function loadMore() {
+    offset += limit;
+    fetchMemes();
+  }
+
+  loadMoreButton.addEventListener('click', loadMore);
+
+  fetchMemes();
+
+
+
+</script>
+{% endblock %}

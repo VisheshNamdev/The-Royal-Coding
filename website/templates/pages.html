@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<title>{% block title %}{{ curr_page.name.replace('-', ' ').title() }}{% endblock %} - The Royal Coding</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="Learn {{ curr_page.name.replace('-', ' ').title() }} code from The Royal Coding. Designed to enhance your programming skills. Ideal for beginners and those refreshing their knowledge." />
+<meta name="keywords" content="coding practice problems, basic coding problems, improve coding skills, programming, problems, competetive programming, Basic, Practice">
+
+  <!--google ads code -->
+<meta name="google-adsense-account" content="ca-pub-9610398121068963">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9610398121068963"
+     crossorigin="anonymous"></script>
+  <!--google ads code -->
+ 
+<meta name="author" content="The Royal Coding" />
+<meta property="og:title" content="{{ curr_page.name.replace('-', ' ').title() }} - The Royal Coding">
+<meta property="og:description" content="Explore basic coding practice problems from The Royal Coding. Designed to enhance your programming skills. Ideal for beginners and those refreshing their knowledge.">
+    <meta property="og:url" content="https://www.theroyalcoding.com/basic-practice-problems">
+    <meta property="og:image" content="https://www.theroyalcoding.com/static/images/logo.png">
+    <meta property="og:site_name" content="The Royal Coding">
+    <meta name="twitter:card" content="summary_large_image">
+ <meta property="twitter:title" content="{{ curr_page.name.replace('-', ' ').title() }} - The Royal Coding">
+    <meta name="twitter:description" content="Explore basic coding practice problems from The Royal Coding. Designed to enhance your programming skills. Ideal for beginners and those refreshing their knowledge.">
+    <meta name="twitter:image" content="https://www.theroyalcoding.com/static/images/logo.png">
+    <meta name="twitter:url" content="https://www.theroyalcoding.com/basic-practice-problems">
+    <meta name="twitter:site" content="@TheRoyalCoding">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-mfizz/2.4.1/font-mfizz.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Favicon-->
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/images/Fevicon-TRC.png') }}" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/styles.css') }}" />
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+    <div class=" sidebar border-end" id="sidebar-wrapper">
+      <div style="background: #ffa500;">
+        <div class="flex justify-between items-center">
+          <a href="/">
+            <img class=" mt-1 imagelogo w-11 h-11  m-1 inline"
+              src="{{ url_for('static', filename='/images/logo.png') }}"></a>
+          <span class=" mr-4 text-black cursor-pointer text-xl">
+            <b>The Royal Coding</b>
+          </span>
+        </div>
+      </div>
+
+        <div class="list-group list-group-flush">
+          {% for page in pages %}
+            <a class="list-group-item list-group-item-action list-group-item-light p-2 {% if page.name == curr_page.name %}active-link{% endif %}" href="/basic-practice-problems/{{ page.name }}">
+              <b>{{ page.name.replace('-', ' ').title() }}</b>
+            </a>
+          {% endfor %}
+      
+      </div>
+    </div>
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+      <!-- Top navigation-->
+      <nav class="navbar navbar-expand-lg navbar-light bg-#ffa500 border-bottom">
+        <div class="container-fluid">
+          <!-- Toggle Menu Button -->
+          <button class="btn btn-primary" id="sidebarToggle"><b>Toggle Menu</b></button>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <!-- Navbar Links Container -->
+          <div class="collapse navbar-collapse text-md" style="margin-top: 8px;" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+              <li class="nav-item active"><a class="nav-link" href="/"><b>Home</b></a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false"><b>Tutorials</b></a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/c"><i class="fa-solid fa-c"></i>&nbsp;&nbsp;<b>C</b></a>
+                  <a class="dropdown-item" href="/cpp"><i class="icon-cplusplus"></i>&nbsp;&nbsp;<b>C++</b></a>
+                  <a class="dropdown-item" href="/python"><i class="fa-brands fa-python"></i>&nbsp;&nbsp;<b>Python</b></a>
+                  <a class="dropdown-item" href="/java"><i class="fa-brands fa-java"></i>&nbsp;&nbsp;<b>Java</b></a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false"><b>Practice Programs</b></a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/basic-practice-problems"><i class="fa-solid fa-angles-down"></i>&nbsp;&nbsp;<b>Basic Level</b></a>
+                  <a class="dropdown-item" href="/moderate-practice-problems"><i class="fa-solid fa-align-justify"></i>&nbsp;&nbsp; <b>Moderate Level</b></a>
+                  <a class="dropdown-item" href="/advance-practice-problems"><i class="fa-solid fa-angles-up"></i>&nbsp;&nbsp;<b>Advance Level</b></a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a href="/posts" class="nav-link"><b>Blogs</b></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/contact"><b>Contact us</b></a>
+              </li>
+              {% if user.is_authenticated %}
+              <!-- User Authenticated Dropdown -->
+              <li class="user_auth nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  <span class="user-icon">{{ user.username[0].capitalize() }}</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/profile"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;<b>My Profile</b></a>
+                  <a class="dropdown-item" href="/myblogs"><i class="fa-solid fa-newspaper"></i>&nbsp;&nbsp;<b>My Articles</b></a>
+                  <a class="dropdown-item" href="/user/bookmarked"><i class="fa-solid fa-bookmark"></i>&nbsp;&nbsp;<b>Saved Articles</b></a>
+                  <a class="dropdown-item" href="/profile?editProfile=true"><i class="fa-solid fa-pencil-alt"></i>&nbsp;&nbsp;<b>Edit Profile</b></a>
+                  <a class="dropdown-item" href="/logout"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;<b>Logout</b></a>
+                </div>
+              </li>
+              {% else %}
+              <!-- User Not Authenticated Links -->
+              <li class="nav-item active">
+                <a class="nav-link" href="\login" style="background-color: white;"><b>Login</b></a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="\signup" style="background-color: white;"><b>Sign up</b></a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+
+
+      <span onclick="topFunction()" id="myBtn" title="Go to top"><i
+          class="fa-solid fa-circle-chevron-up fa-beat"></i></span>
+      <section class="text-gray-600 body-font">
+        <div class="container px-2 py-8 mx-auto">
+          <div class="flex flex-col text-center w-full">
+            <h4 class="text-xl grayy text-grey-200 tracking-widest font-medium title-font mb-1">
+              <b>Python/C/C++/JAVA
+              </b>
+            </h4>
+            <h2 class="sm:text-3xl whity text-4xl title-font text-gray-900"><b>Basic Practice Programs with
+                Code and
+                Concept</b></h2>
+            <h6>By D.S</h6>
+          </div>
+        </div>
+      </section>
+
+      <!-- this is the place where you insert data from SQL -->
+       <div>
+      {{curr_page.content | safe}}
+       </div>
+    </div>
+  </div>
+
+  <div class="button-container border-bottom">
+    {% if pages|length > 1 %}
+      {% if curr_page in pages %}
+        {% set curr_index = pages.index(curr_page) %}
+        {% if curr_index == 0 %}
+          <!-- First page in the list -->
+          <a href="/">
+            <button class="prebtn rounded mb-4" id="homeBtn">Home</button>
+          </a>
+          <a href="/basic-practice-problems/{{ pages[1].name }}">
+            <button class="prebtn rounded mb-4" id="nextBtn">Next</button>
+          </a>
+        {% elif curr_index == pages|length - 1 %}
+          <!-- Last page in the list -->
+          <a href="/basic-practice-problems/{{ pages[curr_index - 1].name }}">
+            <button class="prebtn rounded mb-4" id="previousBtn">Previous</button>
+          </a>
+        {% else %}
+          <!-- Middle pages -->
+          <a href="/basic-practice-problems/{{ pages[curr_index - 1].name }}">
+            <button class="prebtn rounded mb-4" id="previousBtn">Previous</button>
+          </a>
+          <a href="/basic-practice-problems/{{ pages[curr_index + 1].name }}">
+            <button class="prebtn rounded mb-4" id="nextBtn">Next</button>
+          </a>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  </div>
+  
+
+  <footer class="text-gray-900 py-8 bg-gray-800">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap justify-between mb-8">
+        <!-- Programs Section -->
+        <div class="w-full sm:w-1/2 md:w-1/4 mb-4 md:mb-0">
+          <h4 class="text-xl font-bold mb-2 ml-8 " style="color: #ffa500;">Practice Programs & Funs</h4>
+          <ul>
+            <li><a href="/basic-practice-problems" class=" text-lg text-white block hover:text-gray-500">Basics Practice
+                Problems</a></li>
+            <li><a href="/moderate-practice-problems" class=" text-lg text-white block hover:text-gray-500">Moderate
+                Practice Problems</a></li>
+            <li><a href="/advance-practice-problems" class=" text-lg text-white block hover:text-gray-500">Advance
+                Practice Problems</a></li>
+            <li><a href="/memes" class=" text-lg text-white block hover:text-gray-500">Code with Fun(Memes)</a></li>
+          </ul>
+        </div>
+        <!-- Service Section -->
+        <div class="w-full sm:w-1/2 md:w-1/4 mb-4 md:mb-0">
+          <h4 class="text-lg font-bold mb-2 ml-8 " style="color: #ffa500; ">Courses</h4>
+          <ul>
+            <li><a href="/c" class=" text-lg text-white block hover:text-gray-500">C</a></li>
+            <li><a href="/cpp" class=" text-lg text-white block hover:text-gray-500">C++</a></li>
+            <li><a href="/python" class=" text-lg text-white block hover:text-gray-500">Python</a></li>
+            <li><a href="/java" class=" text-lg text-white block hover:text-gray-500">Java</a></li>
+          </ul>
+        </div>
+        <!-- Contact Section -->
+        <div class="w-full sm:w-1/2 md:w-1/4 mb-4 md:mb-0">
+          <h4 class="text-lg font-bold mb-2 ml-8 " style="color: #ffa500;">Contact</h4>
+          <ul>
+            <li><a href="/" class="text-lg text-white block hover:text-gray-500">Home</a></li>
+            <li><a href="/posts" class="text-lg text-white block hover:text-gray-500">Blogs</a></li>
+            <li><a href="/contact" class="text-lg text-white block hover:text-gray-500">Contact</a></li>
+            <li><a href="/privacy-policy" class="text-lg text-white block hover:text-gray-500">Privacy Policy</a></li>
+            <li><a href="/terms-conditions" class="text-lg text-white block hover:text-gray-500">Terms & Conditions</a>
+            </li>
+          </ul>
+        </div>
+        <!-- Newsletter Section -->
+        <div class="w-full sm:w-1/2 md:w-1/4 mb-4 md:mb-0">
+          <h4 class="text-lg font-bold mb-2 " style="color: #ffa500;">Newsletter</h4>
+          <form class="flex mb-4">
+            <input type="email" placeholder="Email Address" class="px-2 py-1 w-full text-gray-800 rounded-l">
+            <button type="submit"
+              class="bg-orange-500 text-white px-4 py-1 rounded-r hover:bg-black hover:text-orange-500">Subscribe</button>
+          </form>
+          <div class="flex space-x-2">
+            <!-- Social Media Icons -->
+            <a href="https://wa.link/wwdawt" class="text-green-500 hover:text-green-600">
+              <i class="fab fa-whatsapp w-6 h-6"></i>
+            </a>
+            <a href="https://www.youtube.com/@TheRoyalCoding" class="text-red-600 hover:text-red-700">
+              <i class="fab fa-youtube w-6 h-6"></i>
+            </a>
+            <a href="https://www.instagram.com/theroyalcoding/" class="text-pink-500 hover:text-pink-600">
+              <i class="fab fa-instagram w-6 h-6"></i>
+            </a>
+            <a href="https://www.facebook.com/theroyalcoding" class="text-blue-600 hover:text-blue-700">
+              <i class="fab fa-facebook w-6 h-6"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/theroyalcoding/" class="text-blue-500 hover:text-blue-600">
+              <i class="fab fa-linkedin w-6 h-6"></i>
+            </a>
+            <a href="https://www.instagram.com/theroyalcoding/" class="text-blue-400 hover:text-blue-500">
+              <i class="fab fa-twitter w-6 h-6"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+      <div class="pt-6 flex flex-col md:flex-row justify-between items-center">
+        <!-- MSME Section -->
+        <div class="flex items-center mb-4 md:mb-0">
+          <!-- MSME Logo -->
+          <img src="{{ url_for('static', filename='/images/MSME.png') }}"
+            style="background-color: white; border-radius: 50%;" alt="MSME Logo" class="h-10 w-10 mr-3 border">
+          <span class="text-lg font-bold text-white">An MSME Verified Company</span>
+        </div>
+        <!-- Logo Section -->
+        <div class="flex items-center mb-4 md:mb-0">
+          <!-- The Royal Coding Logo -->
+          <img src="{{ url_for('static', filename='/images/logo.png') }}" alt="The Royal Coding Logo"
+            class="h-10 w-10 mr-3">
+          <span class="text-xl font-bold text-white">The Royal Coding</span>
+        </div>
+        <!-- Copyright -->
+        <div class="text-gray-200 text-sm">
+          &copy; 2024 The Royal Coding. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script>
+
+    window.addEventListener('DOMContentLoaded', event => {
+
+      // Toggle the side navigation
+      const sidebarToggle = document.body.querySelector('#sidebarToggle');
+      if (sidebarToggle) {
+        // Uncomment Below to persist sidebar toggle between refreshes
+        // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
+        //     document.body.classList.toggle('sb-sidenav-toggled');
+        // }
+        sidebarToggle.addEventListener('click', event => {
+          event.preventDefault();
+          document.body.classList.toggle('sb-sidenav-toggled');
+          localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+        });
+      }
+
+    });
+
+
+    //Scroll to top button
+    // Get the button
+    let mybutton = document.getElementById("myBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    document.querySelectorAll('.copy-button').forEach(button => {
+      button.addEventListener('click', () => {
+          const code = button.nextElementSibling.querySelector('code').textContent;
+          navigator.clipboard.writeText(code).then(() => {
+              button.textContent = 'Copied!';
+              setTimeout(() => {
+                  button.textContent = 'Copy';
+              }, 2000);
+          }).catch(() => {
+              button.textContent = 'Failed';
+          });
+      });
+    });
+</script>
+</body>
+
+</html>
