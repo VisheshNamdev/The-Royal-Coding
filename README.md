@@ -44,9 +44,6 @@ Feel free to open issues if you find bugs, or if you have suggestions for new fe
 2. Backend: Python (Django)
 3. Database: SQLite (default), but can be configured for other databases like PostgreSQL.
 4. Version Control: Git & GitHub
-   
-### License ###
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 Let's make coding more royal together! 👑
 Feel free to adjust any of the sections according to your specific preferences. If you have more details about the website or instructions on how people can get started, you can add those as well.
